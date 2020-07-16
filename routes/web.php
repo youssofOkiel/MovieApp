@@ -13,13 +13,15 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('index');
-});
-Route::get('movie', function () {
-    return view('show');
-})->name('show');
+Route::get( '/' , [
+    'uses'=>'MovieController@index',
+    'as' =>'movies'
+]);
 
+Route::get('movie/{id}',[
+    'uses'=>'MovieController@show',
+    'as' =>'movie'
+]);
 
 Auth::routes();
 

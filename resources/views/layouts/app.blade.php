@@ -3,6 +3,10 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
@@ -78,7 +82,7 @@
                     </ul>
 
                     <!-- Right Side Of Navbar -->
-                    <ul class="navbar-nav ml-auto items-center">
+                    <ul class="navbar-nav ml-auto flex items-center">
                         <div class="flex flex-col md:flex-row  mx-4 mt-1">
                         <div class="relative">
                             <input type="text" placeholder="Search" class="bg-light rounded-full  px-4 focus:outline-none focus:shadow-outline ">
@@ -98,7 +102,7 @@
                                 </li>
                             @endif
                         @else
-                            <li class="nav-item dropdown flex flex-col sm:flex-row ">
+                            <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle " href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->name }}
                                 </a>
@@ -116,11 +120,11 @@
                                 </div>
                             </li>
 
-                            <div class="flex flex-col sm:flex-row md:flex-row lg:flex-row" >
+                            <li class="flex flex-col sm:flex-row md:flex-row lg:flex-row" >
                                 <a href="#" >
                                     <img src="{{ asset('image/avatar.jpg') }}" alt="avatar" class="rounded-full w-8 h-8">
                                 </a>
-                            </div>
+                            </li>
                         @endguest
 
                     </ul>
