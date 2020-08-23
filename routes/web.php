@@ -18,9 +18,35 @@ Route::get( '/' , [
     'as' =>'movies'
 ]);
 
-Route::get('movie/{id}',[
+Route::get('movie/{id}', [
+
     'uses'=>'MovieController@show',
     'as' =>'movie'
+]);
+
+Route::get( 'Actors' , [
+    'uses'=>'ActorsController@index',
+    'as' =>'Actors'
+]);
+Route::get( 'TVshows' , [
+    'uses'=>'TVshowController@index',
+    'as' =>'TVshows'
+]);
+
+Route::get('TVshow/{id}', [
+
+    'uses'=>'TVshowController@show',
+    'as' =>'TVshow'
+]);
+
+Route::get('Contact_Us', [
+
+    'uses'=>'SendMailController@index',
+    'as' =>'contact'
+]);
+Route::post('sendMail/send', [
+
+    'uses'=>'SendMailController@send'
 ]);
 
 Auth::routes();

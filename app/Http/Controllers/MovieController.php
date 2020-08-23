@@ -18,14 +18,23 @@ class MovieController extends Controller
             ->get('https://api.themoviedb.org/3/movie/now_playing')
             ->json()['results'];//to just scrap only result
 
+        $genresArray = Http::withToken(config('services.tmdb.token'))
+            ->get('https://api.themoviedb.org/3/genre/movie/list')
+            ->json()['genres'];//to just scrap only result
+
+        $genres = collect($genresArray)->mapWithKeys(function ($genre){
+            return [$genre['id'] => $genre['name']];
+        });
+
         $popularMovies = Http::withToken(config('services.tmdb.token'))
             ->get('https://api.themoviedb.org/3/movie/popular')
-            ->json()['results'];//to just scrap only result
+            ->json()['results'];//to just scrap only results
 
-            dump($now_playing);
+        //    dump($now_playing);
 
-        return view('index' , [
+        return view('movies/index' , [
             'now_playing'=>$now_playing,
+            'genres' => $genres,
             'popularMovies' => $popularMovies
         ]);
     }
@@ -43,7 +52,7 @@ class MovieController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\Request  $req uest
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -59,7 +68,35 @@ class MovieController extends Controller
      */
     public function show($id)
     {
-        return view('movie');
+        $recommendations = Http::withToken(config('services.tmdb.token'))
+            ->get('https://api.themoviedb.org/3//movie/'.$id.'/recommendations')
+            ->json()['results'];//to just scrap only result
+
+        $genresArray = Http::withToken(config('services.tmdb.token'))
+            ->get('https://api.themoviedb.org/3/genre/movie/list')
+            ->json()['genres'];//to just scrap only result
+
+        $genres = collect($genresArray)->mapWithKeys(function ($genre){
+            return [$genre['id'] => $genre['name']];
+        });
+
+        $movie = Http::withToken(config('services.tmdb.token'))
+            ->get('https://api.themoviedb.org/3/movie/'.$id.'?append_to_response=videos,images')
+            ->json();
+
+        $cast_crew = Http::withToken(config('services.tmdb.token'))
+            ->get('https://api.themoviedb.org/3/movie/'.$id.'/credits')
+            ->json();
+
+      //  dump($movie);
+
+        return view('movies/show', [
+            'id'=>$id,
+            'recommendations'=>$recommendations,
+            'genres' => $genres,
+            'movie' => $movie,
+            'cast_crew' => $cast_crew
+        ]);
     }
 
     /**
