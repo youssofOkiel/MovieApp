@@ -16,7 +16,7 @@ class MovieController extends Controller
     {
         $now_playing = Http::withToken(config('services.tmdb.token'))
             ->get('https://api.themoviedb.org/3/movie/now_playing')
-            ->json()['results'];//to just scrap only result
+            ->json();//to just scrap only result
 
         $genresArray = Http::withToken(config('services.tmdb.token'))
             ->get('https://api.themoviedb.org/3/genre/movie/list')
@@ -33,7 +33,7 @@ class MovieController extends Controller
         //    dump($now_playing);
 
         return view('movies/index' , [
-            'now_playing'=>$now_playing,
+            'now_playing'=>$now_playing['results'],
             'genres' => $genres,
             'popularMovies' => $popularMovies
         ]);
