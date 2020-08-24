@@ -4,7 +4,8 @@
 <div class="container mx-auto ">
 
     <div class="now_playing">
-        <h2 class="text-green-400 font-semibold uppercase tracking-widest text-4xl"  >Tv Shows now_playing</h2>
+        <h2 class="text-green-400 font-semibold uppercase tracking-widest text-4xl"  >
+        Tv Shows NOW<i class="fa fa-television ml-2" style="font-size:36px"></i></h2>
         <p style="font-size:48px">
             &#128525;
         </p>
@@ -40,7 +41,8 @@
     <hr class="my-10 font-bold bg-orange-300">
 
     <div class="popular_Movies">
-        <h2 class="text-green-400 font-semibold uppercase tracking-widest text-4xl"  >Tv Shows popular_Movies</h2>
+        <h2 class="text-green-400 font-semibold uppercase tracking-widest text-4xl"  >
+        Tv Shows popular <i class="fa fa-television ml-2" style="font-size:36px; "></i></h2>
         <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3" >
 
             @foreach( $populars as  $tv )

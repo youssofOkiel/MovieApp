@@ -10,7 +10,7 @@
 
                     <div class="card-body">
 
-                            <div class="alert alert-success font-bold text-2xl " role="alert">
+                            <div class="alert alert-primary font-bold text-2xl " role="alert">
                                 Hi sir
                             </div>
                         @if(count($errors) > 0)
@@ -23,9 +23,9 @@
                             </ul>
                         @endif
 
-                        @if($message = \Illuminate\Support\Facades\Session::get('Email Sent'))
+                        @if($message = \Illuminate\Support\Facades\Session::get('success'))
                             <div class="alert alert-success font-bold text-2xl " role="alert">
-                                <strong>{{$message}}</strong>
+                                <strong>Email Sent successfuly </strong>
                             </div>
                         @endif
 
@@ -33,7 +33,6 @@
                             @csrf
                             <div class="form-group">
                                 <label for="exampleFormControlInput1"> enter your Email address</label>
-                                @csrf
                                 <input name="email" type="email" class="form-control"  placeholder="name@example.com">
                             </div>
                             <div class="form-group">
@@ -48,11 +47,10 @@
                             <div class="form-group">
                                 <label for="exampleFormControlTextarea1">your massege</label>
                                 <i class="material-icons">create</i>
-                                @csrf
                                 <textarea name="message" class="form-control" rows="3"></textarea>
                             </div>
                             <button type="submit" class="btn btn-primary rounded-full ">send
-                                <i class="material-icons mx-2 ml-2 text-sm" >send</i> </button>
+                            <i class="fa fa-paper-plane-o mx-2 ml-2 text-sm"></i> </button>
                         </form>
 
                     </div>

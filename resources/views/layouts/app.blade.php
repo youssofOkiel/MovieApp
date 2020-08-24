@@ -92,8 +92,8 @@
                             </li>
 
                             <li class="nav-item" >
-                                <a href="#" >
-                                    <img src="{{ asset('image/avatar.jpg') }}" alt="avatar" class="rounded-full w-8 h-8">
+                                <a href="{{route('home')}}" >
+                                    <img src="{{ asset('image/avatar.png') }}" alt="avatar" class="rounded-full w-8 h-8">
                                 </a>
                             </li>
                         @endguest

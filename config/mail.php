@@ -36,13 +36,11 @@ return [
     'mailers' => [
         'smtp' => [
             'transport' => 'smtp',
-            'host' => env('MAIL_HOST', 'smtp.gmail.com'),
-            'port' => env('MAIL_PORT', 587),
-            'encryption' => env('MAIL_ENCRYPTION', 'tls'),
-            'username' => env('youssofokiel00@gmail.com'),
-            'password' => env('yuossof1115458580'),
-            'timeout' => null,
-            'auth_mode' => null,
+            'host' => 'smtp.gmail.com',
+            'port' => 587,
+            'encryption' => 'tls',
+            'username' => 'youssof587@gmail.com',
+            'password' => 'frmprixaltwqbvey'
         ],
 
         'ses' => [
@@ -50,7 +48,7 @@ return [
         ],
 
         'mailgun' => [
-            'transport' => 'gmail',
+            'transport' => 'mailgun',
         ],
 
         'postmark' => [
@@ -84,7 +82,7 @@ return [
     */
 
     'from' => [
-        'address' => env('MAIL_FROM_ADDRESS', 'youssofokiel00@gmail.com'),
+        'address' => 'youssof587@gmail.com',
         'name' => env('MAIL_FROM_NAME', 'youssof okiel'),
     ],
 

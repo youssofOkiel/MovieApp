@@ -17,13 +17,11 @@ class SendMail extends Mailable
      * @return void
      */
 
-    public $typ;
-    public $mesg;
+    public $data;
 
-    public function __construct($type,$message)
+    public function __construct($data)
     {
-        $this->typ = $type;
-        $this->mesg = $message;
+        $this->data = $data;
     }
 
     /**
@@ -33,9 +31,9 @@ class SendMail extends Mailable
      */
     public function build()
     {
-        $e_type = $this->typ;
-        $e_message = $this->mesg;
 
-        return $this->view('contact' , compact("e_message"))->subject($e_type);
+            return $this->from('company@softchallengers.com')
+            ->subject($this->data['type'])
+            ->view('emails.mailTemp')->with('data', $this->data);
     }
 }
