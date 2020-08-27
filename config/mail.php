@@ -40,7 +40,7 @@ return [
             'port' => 587,
             'encryption' => 'tls',
             'username' => 'youssof587@gmail.com',
-            'password' => 'frmprixaltwqbvey'
+            'password' => 'xxxxxxxx'
         ],
 
         'ses' => [
